@@ -86,10 +86,10 @@
       transition: all 0.2s ease;
     }
     .btn:hover { filter: brightness(1.08); }
-    .btn-accent { background: var(--accent); color: #fff; border: none; }
-    .btn-accent:hover { background: var(--accent-2); }
-    .btn-blue { background: var(--blue); color: #fff; border: none; }
-    .btn-blue:hover { background: #2563eb; }
+    .btn-accent { background: linear-gradient(135deg, #4CAF50, #45a049); color: #fff; border: none; }
+    .btn-accent:hover { background: linear-gradient(135deg, #45a049, #388e3c); }
+    .btn-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; border: none; }
+    .btn-blue:hover { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
     .btn[aria-pressed="true"] { background: var(--accent); color: #fff; }
     
     /* Navigation */
@@ -136,26 +136,83 @@
       display: inline-flex; 
       align-items: center; 
       gap: 8px; 
-      padding: 8px 14px; 
-      border-radius: 20px; 
+      padding: 10px 16px; 
+      border-radius: 25px; 
       background: var(--chip); 
-      border: var(--chip-border); 
+      border: 2px solid transparent; 
       cursor: pointer; 
       user-select: none;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
     }
-    .chip:hover { filter: brightness(1.05); }
+    .chip:hover { 
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    }
     .chip input { display: none; }
     .chip .count { 
       font-weight: 700; 
-      opacity: .8; 
-      padding: 2px 8px; 
-      border-radius: 10px; 
-      background: rgba(255,255,255,.1);
+      padding: 4px 8px; 
+      border-radius: 12px; 
+      background: rgba(255,255,255,.9);
+      color: #333;
+      font-size: 12px;
     }
-    .chip.active { 
-      outline: 2px solid var(--accent); 
-      background: rgba(76,175,80,.1);
+    
+    /* Chip specifici per categoria */
+    .chip[data-category="CdC"] { 
+      background: linear-gradient(135deg, #3b82f6, #2563eb); 
+      color: white; 
+    }
+    .chip[data-category="CdC"].active { 
+      border-color: #1d4ed8;
+      box-shadow: 0 0 0 4px rgba(59,130,246,.2);
+    }
+    
+    .chip[data-category="Collegio docenti"] { 
+      background: linear-gradient(135deg, #10b981, #059669); 
+      color: white; 
+    }
+    .chip[data-category="Collegio docenti"].active { 
+      border-color: #047857;
+      box-shadow: 0 0 0 4px rgba(16,185,129,.2);
+    }
+    
+    .chip[data-category="Dipartimenti"] { 
+      background: linear-gradient(135deg, #f59e0b, #d97706); 
+      color: white; 
+    }
+    .chip[data-category="Dipartimenti"].active { 
+      border-color: #b45309;
+      box-shadow: 0 0 0 4px rgba(245,158,11,.2);
+    }
+    
+    .chip[data-category="Scrutini"] { 
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed); 
+      color: white; 
+    }
+    .chip[data-category="Scrutini"].active { 
+      border-color: #6d28d9;
+      box-shadow: 0 0 0 4px rgba(139,92,246,.2);
+    }
+    
+    .chip[data-category="Altro"] { 
+      background: linear-gradient(135deg, #ef4444, #dc2626); 
+      color: white; 
+    }
+    .chip[data-category="Altro"].active { 
+      border-color: #b91c1c;
+      box-shadow: 0 0 0 4px rgba(239,68,68,.2);
+    }
+    
+    .chip[data-category="Open Day"] { 
+      background: linear-gradient(135deg, #ff6b6b, #ee5a52); 
+      color: white; 
+    }
+    .chip[data-category="Open Day"].active { 
+      border-color: #dc2f2f;
+      box-shadow: 0 0 0 4px rgba(255,107,107,.2);
     }
     
     /* Card */
@@ -192,6 +249,19 @@
     .btn-large:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(0,0,0,.2);
+    }
+    
+    .btn-large.btn-accent:hover {
+      background: linear-gradient(135deg, #45a049, #388e3c) !important;
+    }
+    
+    .btn-large.btn-blue:hover {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+    }
+    
+    /* Hover specifico per il pulsante iPhone/iPad */
+    a#downloadICal:hover {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
     }
     
     /* Calendar Views */
@@ -231,13 +301,36 @@
     }
     .day.today { 
       outline: 3px solid var(--accent); 
-      background: rgba(76,175,80,.15);
-      box-shadow: 0 0 0 1px var(--accent);
+      background: linear-gradient(135deg, rgba(76,175,80,.2), rgba(76,175,80,.15));
+      box-shadow: 0 0 0 1px var(--accent), 0 8px 25px rgba(76,175,80,.3);
+      position: relative;
+      transform: scale(1.02);
     }
     .day.today .date {
-      color: var(--accent);
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
       font-weight: 900;
-      font-size: 16px;
+      font-size: 18px;
+      padding: 4px 8px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(76,175,80,.4);
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      border: 2px solid #ffffff;
+    }
+    .day.today::before {
+      content: "OGGI";
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(255,107,107,.3);
     }
     .day.other-month { 
       opacity: .4; 
@@ -265,6 +358,7 @@
     .cat-Dipartimenti { background: rgba(245,158,11,.25); border-color: rgba(245,158,11,.5); }
     .cat-Scrutini { background: rgba(139,92,246,.25); border-color: rgba(139,92,246,.5); }
     .cat-Altro { background: rgba(239,68,68,.25); border-color: rgba(239,68,68,.5); color: #333; font-weight: 600; }
+    .cat-OpenDay { background: rgba(255,107,107,.25); border-color: rgba(255,107,107,.5); color: #333; font-weight: 600; }
     
     /* Weekly View */
     .week-strip { 
@@ -277,6 +371,13 @@
       min-width: 250px; 
       flex: 0 0 250px;
     }
+    .week-col.today {
+      transform: scale(1.02);
+      box-shadow: 0 8px 25px rgba(76,175,80,.2);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(76,175,80,.1), rgba(76,175,80,.05));
+    }
     .week-header { 
       font-weight: 800; 
       margin-bottom: 12px; 
@@ -284,6 +385,24 @@
       padding: 8px; 
       border-radius: 8px; 
       background: var(--chip);
+    }
+    .week-col.today .week-header {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      position: relative;
+    }
+    .week-col.today .week-header::after {
+      content: "OGGI";
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(255,107,107,.3);
     }
     
     /* Yearly View */
@@ -353,10 +472,12 @@
     }
     .mini-month .today { 
       outline: 2px solid var(--accent); 
-      border-radius: 4px;
-      background: rgba(76,175,80,.15);
-      color: var(--accent);
-      font-weight: 800;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #ffffff;
+      font-weight: 900;
+      box-shadow: 0 2px 8px rgba(76,175,80,.4);
+      position: relative;
     }
     
     /* Modal */
@@ -543,7 +664,7 @@
       
       <div class="controls">
         <input id="search" type="search" placeholder="Cerca evento...">
-        <button id="todayBtn" class="btn">Settembre 2025</button>
+        <button id="todayBtn" class="btn" style="background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; font-weight: 700; border: none;">📍 Oggi</button>
         <button id="exportPdf" class="btn btn-accent">Esporta PDF</button>
         <button id="fullscreenToggle" class="btn" aria-pressed="false">⛶</button>
       </div>
@@ -559,14 +680,14 @@
       <button id="syncGoogleCalendar" class="btn btn-blue btn-large">
         🔄 Sincronizza con Google Calendar
       </button>
-      <a id="downloadICal" class="btn btn-large" style="background: #6b7280; color: #fff; text-decoration: none;">
+      <a id="downloadICal" class="btn btn-large" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: #fff; text-decoration: none;">
         📱 Scarica per iPhone/iPad
       </a>
     </div>
     
     <div style="text-align: center; margin: 0 0 20px 0;">
       <p style="margin: 0; font-size: 14px; color: var(--muted);">
-        Sincronizza il calendario con il tuo dispositivo per ricevere notifiche automatiche
+        Sincronizza il calendario con il tuo dispositivo per ricevere notifiche automatiche degli eventi scolastici e Open Day
       </p>
     </div>
     
@@ -630,6 +751,19 @@
             </ul>
           </div>
         </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">❓ Come posso conoscere le date degli Open Day?</summary>
+          <div class="faq-answer">
+            <p>Gli Open Day sono inclusi nel calendario e facilmente identificabili:</p>
+            <ul>
+              <li><strong>Filtro categoria:</strong> Usa il filtro "Open Day" per visualizzare solo questi eventi</li>
+              <li><strong>Pulsante dedicato:</strong> Clicca su "Open Day / Orientamento" per maggiori informazioni</li>
+              <li><strong>Notifiche:</strong> Sincronizza il calendario per ricevere promemoria automatici</li>
+              <li><strong>Dettagli eventi:</strong> Clicca sui singoli eventi per orari e descrizioni complete</li>
+            </ul>
+          </div>
+        </details>
       </div>
     </div>
   </div>
@@ -673,6 +807,11 @@ const EVENTS = [
   { date: "2026-05-08", title: "Santo Patrono - Villa Cortese", cat: "Altro", description: "Santo Patrono di Villa Cortese - Scuole chiuse" },
   { date: "2026-06-02", title: "Festa della Repubblica", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
   
+  // === EVENTI OPEN DAY / ORIENTAMENTO ===
+  { date: "2025-11-16", title: "Open Day - Presentazione Istituto", time: "15:00", cat: "Open Day", description: "Presentazione dell'offerta formativa e visita ai laboratori dell'IIS Mendel" },
+  { date: "2025-12-14", title: "Open Day - Laboratori Aperti", time: "15:00", cat: "Open Day", description: "Laboratori di Agraria, Biotecnologie e Chimica aperti per le famiglie" },
+  { date: "2026-01-18", title: "Open Day - Orientamento in Entrata", time: "15:00", cat: "Open Day", description: "Giornata dedicata all'orientamento per gli studenti di terza media" },
+  
   // === NOTE PER FUTURE PROGRAMMAZIONI ===
   // Qui potranno essere aggiunte le attività quando saranno programmate:
   // { date: "2025-09-01", title: "Collegio docenti apertura", time: "15:00", cat: "Collegio docenti", description: "..." },
@@ -689,7 +828,8 @@ const CATEGORY_COLORS = {
   "Collegio docenti": "cat-Collegio",
   "Dipartimenti": "cat-Dipartimenti",
   "Scrutini": "cat-Scrutini", 
-  "Altro": "cat-Altro"
+  "Altro": "cat-Altro",
+  "Open Day": "cat-OpenDay"
 };
 
 let currentView = "monthly";
@@ -752,7 +892,9 @@ function abbreviateEvent(title) {
     "Consigli di classe": "CdC", 
     "CdC": "CdC",
     "Dipartimenti": "Dip",
-    "Scrutini": "Scrut"
+    "Scrutini": "Scrut",
+    "Open Day": "OD",
+    "Orientamento": "Orient"
   };
   
   for (const [key, abbr] of Object.entries(abbreviations)) {
@@ -854,6 +996,7 @@ function renderFilters() {
     
     const chip = document.createElement("label");
     chip.className = `chip ${activeCategories.has(category) ? "active" : ""}`;
+    chip.setAttribute('data-category', category);
     chip.innerHTML = `
       <input type="checkbox" ${activeCategories.has(category) ? "checked" : ""}>
       <span>${category}</span>
@@ -1173,8 +1316,9 @@ function navigateNext() {
   render();
 }
 
-function goToSeptember() {
-  currentDate = new Date(2025, 8, 1);
+function goToToday() {
+  const today = new Date();
+  currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   render();
 }
 
@@ -1274,7 +1418,7 @@ function initializeEventListeners() {
   // Navigation
   $("#prev").addEventListener("click", navigatePrevious);
   $("#next").addEventListener("click", navigateNext);
-  $("#todayBtn").addEventListener("click", goToSeptember);
+  $("#todayBtn").addEventListener("click", goToToday);
   
   // View switching
   $$('.views .btn').forEach(btn => {
