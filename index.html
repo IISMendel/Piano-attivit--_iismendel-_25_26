@@ -837,11 +837,9 @@ function parseDate(dateString) {
 
 function isToday(date) {
   const today = new Date();
-  const todayStr = today.getFullYear() + '-' + 
-                   String(today.getMonth() + 1).padStart(2, '0') + '-' + 
-                   String(today.getDate()).padStart(2, '0');
-  const dateStr = formatDate(date);
-  return dateStr === todayStr;
+  return date.getDate() === today.getDate() && 
+         date.getMonth() === today.getMonth() && 
+         date.getFullYear() === today.getFullYear();
 }
 
 function getEventsForDate(dateString) {
