@@ -751,19 +751,6 @@
             </ul>
           </div>
         </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">❓ Come posso conoscere le date degli Open Day?</summary>
-          <div class="faq-answer">
-            <p>Gli Open Day sono inclusi nel calendario e facilmente identificabili:</p>
-            <ul>
-              <li><strong>Filtro categoria:</strong> Usa il filtro "Open Day" per visualizzare solo questi eventi</li>
-              <li><strong>Pulsante dedicato:</strong> Clicca su "Open Day / Orientamento" per maggiori informazioni</li>
-              <li><strong>Notifiche:</strong> Sincronizza il calendario per ricevere promemoria automatici</li>
-              <li><strong>Dettagli eventi:</strong> Clicca sui singoli eventi per orari e descrizioni complete</li>
-            </ul>
-          </div>
-        </details>
       </div>
     </div>
   </div>
@@ -807,17 +794,13 @@ const EVENTS = [
   { date: "2026-05-08", title: "Santo Patrono - Villa Cortese", cat: "Altro", description: "Santo Patrono di Villa Cortese - Scuole chiuse" },
   { date: "2026-06-02", title: "Festa della Repubblica", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
   
-  // === EVENTI OPEN DAY / ORIENTAMENTO ===
-  { date: "2025-11-16", title: "Open Day - Presentazione Istituto", time: "15:00", cat: "Open Day", description: "Presentazione dell'offerta formativa e visita ai laboratori dell'IIS Mendel" },
-  { date: "2025-12-14", title: "Open Day - Laboratori Aperti", time: "15:00", cat: "Open Day", description: "Laboratori di Agraria, Biotecnologie e Chimica aperti per le famiglie" },
-  { date: "2026-01-18", title: "Open Day - Orientamento in Entrata", time: "15:00", cat: "Open Day", description: "Giornata dedicata all'orientamento per gli studenti di terza media" },
-  
   // === NOTE PER FUTURE PROGRAMMAZIONI ===
   // Qui potranno essere aggiunte le attività quando saranno programmate:
   // { date: "2025-09-01", title: "Collegio docenti apertura", time: "15:00", cat: "Collegio docenti", description: "..." },
   // { date: "2025-10-15", title: "CdC ottobre", time: "14:30", cat: "CdC", description: "..." },
   // { date: "2025-11-20", title: "Riunione Dipartimenti", time: "15:00", cat: "Dipartimenti", description: "..." },
   // { date: "2026-01-20", title: "Scrutini primo periodo", time: "14:30", cat: "Scrutini", description: "..." },
+  // { date: "2025-11-16", title: "Open Day - Presentazione Istituto", time: "15:00", cat: "Open Day", description: "..." },
 ];
 
 const IT_MONTHS = ["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"];
@@ -833,7 +816,7 @@ const CATEGORY_COLORS = {
 };
 
 let currentView = "monthly";
-let currentDate = new Date(2025, 8, 1); // Settembre 2025
+let currentDate = new Date(); // Inizia dalla data odierna
 let activeCategories = new Set(Object.keys(CATEGORY_COLORS));
 let searchTerm = "";
 
@@ -854,7 +837,11 @@ function parseDate(dateString) {
 
 function isToday(date) {
   const today = new Date();
-  return formatDate(date) === formatDate(today);
+  const todayStr = today.getFullYear() + '-' + 
+                   String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                   String(today.getDate()).padStart(2, '0');
+  const dateStr = formatDate(date);
+  return dateStr === todayStr;
 }
 
 function getEventsForDate(dateString) {
