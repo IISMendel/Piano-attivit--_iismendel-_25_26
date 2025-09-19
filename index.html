@@ -287,8 +287,8 @@
       background: #fafafa;
     }
     .day.has-events {
-      background: rgba(239,68,68,.1);
-      border-color: rgba(239,68,68,.3);
+      background: rgba(59,130,246,.1);
+      border-color: rgba(59,130,246,.3);
       font-weight: 600;
     }
     .day .date { 
@@ -354,7 +354,7 @@
     
     /* Event Categories */
     .cat-CdC { background: rgba(59,130,246,.25); border-color: rgba(59,130,246,.5); }
-    .cat-Collegio { background: rgba(76,175,80,.25); border-color: rgba(76,175,80,.5); }
+    .cat-Collegio { background: rgba(16,185,129,.25); border-color: rgba(16,185,129,.5); }
     .cat-Dipartimenti { background: rgba(245,158,11,.25); border-color: rgba(245,158,11,.5); }
     .cat-Scrutini { background: rgba(139,92,246,.25); border-color: rgba(139,92,246,.5); }
     .cat-Altro { background: rgba(239,68,68,.25); border-color: rgba(239,68,68,.5); color: #333; font-weight: 600; }
@@ -664,7 +664,7 @@
       
       <div class="controls">
         <input id="search" type="search" placeholder="Cerca evento...">
-        <button id="todayBtn" class="btn" style="background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; font-weight: 700; border: none;">📍 Oggi</button>
+        <button id="todayBtn" class="btn" style="background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; font-weight: 700; border: none;">🎯 Oggi</button>
         <button id="exportPdf" class="btn btn-accent">Esporta PDF</button>
         <button id="fullscreenToggle" class="btn" aria-pressed="false">⛶</button>
       </div>
@@ -687,7 +687,7 @@
     
     <div style="text-align: center; margin: 0 0 20px 0;">
       <p style="margin: 0; font-size: 14px; color: var(--muted);">
-        Sincronizza il calendario con il tuo dispositivo per ricevere notifiche automatiche degli eventi scolastici e Open Day
+        Sincronizza il calendario con il tuo dispositivo per ricevere notifiche automatiche degli eventi scolastici
       </p>
     </div>
     
@@ -779,28 +779,113 @@
 
 <script>
 // =============================================================================
-// EVENTI - Solo Festività Anno Scolastico 2025-2026
+// EVENTI - Piano delle Attività CORRETTO IIS Mendel 2025-2026
 // =============================================================================
 const EVENTS = [
+  // SETTEMBRE 2025
+  { date: "2025-09-01", title: "COLLEGIO DOCENTI", cat: "Collegio docenti", description: "Collegio Docenti - Settembre 2025" },
+  { date: "2025-09-15", title: "DIPARTIMENTI", cat: "Dipartimenti", description: "Riunione Dipartimenti - Settembre 2025" },
+  { date: "2025-09-18", title: "COLLEGIO DOCENTI", cat: "Collegio docenti", description: "Collegio Docenti - Settembre 2025" },
+  { date: "2025-09-29", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Settembre 2025" },
+  { date: "2025-09-30", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Settembre 2025" },
+
+  // OTTOBRE 2025
+  { date: "2025-10-01", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Ottobre 2025" },
+  { date: "2025-10-02", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Ottobre 2025" },
+  { date: "2025-10-03", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Ottobre 2025" },
+  { date: "2025-10-06", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Ottobre 2025" },
+  { date: "2025-10-07", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Ottobre 2025" },
+  { date: "2025-10-08", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Ottobre 2025" },
+  { date: "2025-10-09", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Ottobre 2025" },
+  { date: "2025-10-10", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Ottobre 2025" },
+  { date: "2025-10-22", title: "DIPARTIMENTI", cat: "Dipartimenti", description: "Riunione Dipartimenti - Ottobre 2025" },
+  { date: "2025-10-29", title: "COLLEGIO DOCENTI", cat: "Collegio docenti", description: "Collegio Docenti - Ottobre 2025" },
+  { date: "2025-10-31", title: "INTERRUZIONE DIDATTICA", cat: "Altro", description: "Interruzione Didattica - Ottobre 2025" },
+
+  // NOVEMBRE 2025
+  { date: "2025-11-13", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Novembre 2025" },
+  { date: "2025-11-14", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Novembre 2025" },
+  { date: "2025-11-17", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Novembre 2025" },
+  { date: "2025-11-18", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Novembre 2025" },
+  { date: "2025-11-19", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Novembre 2025" },
+  { date: "2025-11-20", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Novembre 2025" },
+  { date: "2025-11-21", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Novembre 2025" },
+  { date: "2025-11-24", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Novembre 2025" },
+  { date: "2025-11-25", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Novembre 2025" },
+  { date: "2025-11-26", title: "COLLEGIO DOCENTI", cat: "Collegio docenti", description: "Collegio Docenti - Novembre 2025" },
+  { date: "2025-11-27", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Novembre 2025" },
+
+  // DICEMBRE 2025
+  { date: "2025-12-22", title: "INTERRUZIONE DIDATTICA", cat: "Altro", description: "Inizio vacanze natalizie - Dicembre 2025" },
+
+  // GENNAIO 2026
+  { date: "2026-01-08", title: "DIPARTIMENTI", cat: "Dipartimenti", description: "Riunione Dipartimenti - Gennaio 2026" },
+  { date: "2026-01-19", title: "Scrutini", cat: "Scrutini", description: "Scrutini primo quadrimestre - Gennaio 2026" },
+  { date: "2026-01-20", title: "Scrutini", cat: "Scrutini", description: "Scrutini primo quadrimestre - Gennaio 2026" },
+  { date: "2026-01-21", title: "Scrutini", cat: "Scrutini", description: "Scrutini primo quadrimestre - Gennaio 2026" },
+  { date: "2026-01-22", title: "Scrutini", cat: "Scrutini", description: "Scrutini primo quadrimestre - Gennaio 2026" },
+  { date: "2026-01-23", title: "Scrutini", cat: "Scrutini", description: "Scrutini primo quadrimestre - Gennaio 2026" },
+  { date: "2026-01-24", title: "Scrutini", cat: "Scrutini", description: "Scrutini primo quadrimestre - Gennaio 2026" },
+  { date: "2026-01-26", title: "Scrutini", cat: "Scrutini", description: "Scrutini primo quadrimestre - Gennaio 2026" },
+  { date: "2026-01-27", title: "Scrutini", cat: "Scrutini", description: "Scrutini primo quadrimestre - Gennaio 2026" },
+  { date: "2026-01-28", title: "Scrutini", cat: "Scrutini", description: "Scrutini primo quadrimestre - Gennaio 2026" },
+  { date: "2026-01-29", title: "Scrutini", cat: "Scrutini", description: "Scrutini primo quadrimestre - Gennaio 2026" },
+  { date: "2026-01-30", title: "Scrutini", cat: "Scrutini", description: "Scrutini primo quadrimestre - Gennaio 2026" },
+
+  // FEBBRAIO 2026
+  { date: "2026-02-12", title: "Colloqui pomeridiani famiglie", cat: "Altro", description: "Colloqui pomeridiani con le famiglie - Febbraio 2026" },
+  { date: "2026-02-20", title: "CARNEVALE AMBROSIANO", cat: "Altro", description: "Carnevale Ambrosiano - Febbraio 2026" },
+  { date: "2026-02-21", title: "CARNEVALE AMBROSIANO", cat: "Altro", description: "Carnevale Ambrosiano - Febbraio 2026" },
+  { date: "2026-02-24", title: "COLLEGIO DOCENTI", cat: "Collegio docenti", description: "Collegio Docenti - Febbraio 2026" },
+
+  // MARZO 2026
+  { date: "2026-03-10", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Marzo 2026" },
+  { date: "2026-03-11", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Marzo 2026" },
+  { date: "2026-03-12", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Marzo 2026" },
+  { date: "2026-03-13", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Marzo 2026" },
+  { date: "2026-03-16", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Marzo 2026" },
+  { date: "2026-03-17", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Marzo 2026" },
+  { date: "2026-03-18", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Marzo 2026" },
+  { date: "2026-03-19", title: "Consigli di classe (docenti)", cat: "CdC", description: "Consigli di classe (docenti) - Marzo 2026" },
+
+  // APRILE 2026
+  { date: "2026-04-28", title: "DIPARTIMENTI", cat: "Dipartimenti", description: "Riunione Dipartimenti - Aprile 2026" },
+
+  // MAGGIO 2026
+  { date: "2026-05-04", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Maggio 2026" },
+  { date: "2026-05-05", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Maggio 2026" },
+  { date: "2026-05-06", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Maggio 2026" },
+  { date: "2026-05-07", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Maggio 2026" },
+  { date: "2026-05-11", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Maggio 2026" },
+  { date: "2026-05-12", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Maggio 2026" },
+  { date: "2026-05-13", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Maggio 2026" },
+  { date: "2026-05-14", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Maggio 2026" },
+  { date: "2026-05-15", title: "Consigli di classe (genitori)", cat: "CdC", description: "Consigli di classe con genitori - Maggio 2026" },
+  { date: "2026-05-22", title: "COLLEGIO DOCENTI", cat: "Collegio docenti", description: "Collegio Docenti - Maggio 2026" },
+
+  // GIUGNO 2026
+  { date: "2026-06-01", title: "INTERRUZIONE DIDATTICA", cat: "Altro", description: "Interruzione Didattica - Giugno 2026" },
+  { date: "2026-06-08", title: "Scrutini", cat: "Scrutini", description: "Scrutini finali - Giugno 2026" },
+  { date: "2026-06-09", title: "Scrutini", cat: "Scrutini", description: "Scrutini finali - Giugno 2026" },
+  { date: "2026-06-10", title: "Scrutini", cat: "Scrutini", description: "Scrutini finali - Giugno 2026" },
+  { date: "2026-06-11", title: "Scrutini", cat: "Scrutini", description: "Scrutini finali - Giugno 2026" },
+  { date: "2026-06-12", title: "Scrutini", cat: "Scrutini", description: "Scrutini finali - Giugno 2026" },
+  { date: "2026-06-13", title: "Scrutini", cat: "Scrutini", description: "Scrutini finali - Giugno 2026" },
+  { date: "2026-06-15", title: "Scrutini", cat: "Scrutini", description: "Scrutini finali - Giugno 2026" },
+  { date: "2026-06-30", title: "COLLEGIO DOCENTI", cat: "Collegio docenti", description: "Collegio Docenti di chiusura - Giugno 2026" },
+
+  // FESTIVITÀ NAZIONALI
   { date: "2025-11-01", title: "Ognissanti", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
   { date: "2025-12-08", title: "Immacolata Concezione", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
   { date: "2025-12-25", title: "Natale", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
   { date: "2025-12-26", title: "Santo Stefano", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
   { date: "2026-01-01", title: "Capodanno", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
   { date: "2026-01-06", title: "Epifania", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
-  { date: "2026-04-06", title: "Lunedì di Pasqua", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
+  { date: "2026-04-05", title: "Lunedì di Pasqua", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
   { date: "2026-04-25", title: "Festa della Liberazione", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
   { date: "2026-05-01", title: "Festa del Lavoro", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
   { date: "2026-05-08", title: "Santo Patrono - Villa Cortese", cat: "Altro", description: "Santo Patrono di Villa Cortese - Scuole chiuse" },
-  { date: "2026-06-02", title: "Festa della Repubblica", cat: "Altro", description: "Festa nazionale - Scuole chiuse" },
-  
-  // === NOTE PER FUTURE PROGRAMMAZIONI ===
-  // Qui potranno essere aggiunte le attività quando saranno programmate:
-  // { date: "2025-09-01", title: "Collegio docenti apertura", time: "15:00", cat: "Collegio docenti", description: "..." },
-  // { date: "2025-10-15", title: "CdC ottobre", time: "14:30", cat: "CdC", description: "..." },
-  // { date: "2025-11-20", title: "Riunione Dipartimenti", time: "15:00", cat: "Dipartimenti", description: "..." },
-  // { date: "2026-01-20", title: "Scrutini primo periodo", time: "14:30", cat: "Scrutini", description: "..." },
-  // { date: "2025-11-16", title: "Open Day - Presentazione Istituto", time: "15:00", cat: "Open Day", description: "..." },
+  { date: "2026-06-02", title: "Festa della Repubblica", cat: "Altro", description: "Festa nazionale - Scuole chiuse" }
 ];
 
 const IT_MONTHS = ["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"];
@@ -816,7 +901,7 @@ const CATEGORY_COLORS = {
 };
 
 let currentView = "monthly";
-let currentDate = new Date(); // Inizia dalla data odierna
+let currentDate = new Date();
 let activeCategories = new Set(Object.keys(CATEGORY_COLORS));
 let searchTerm = "";
 
@@ -827,19 +912,26 @@ const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
 
 function formatDate(date) {
-  return date.toISOString().slice(0, 10);
+  // Usa il fuso orario locale invece di UTC
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 
 function parseDate(dateString) {
   const [year, month, day] = dateString.split("-").map(Number);
-  return new Date(year, month - 1, day);
+  // Crea la data a mezzogiorno per evitare problemi di fuso orario
+  return new Date(year, month - 1, day, 12, 0, 0);
 }
 
 function isToday(date) {
   const today = new Date();
-  return date.getDate() === today.getDate() && 
-         date.getMonth() === today.getMonth() && 
-         date.getFullYear() === today.getFullYear();
+  // Normalizza entrambe le date a mezzogiorno per il confronto
+  const normalizedToday = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 12, 0, 0);
+  const normalizedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12, 0, 0);
+  
+  return normalizedDate.getTime() === normalizedToday.getTime();
 }
 
 function getEventsForDate(dateString) {
@@ -873,10 +965,10 @@ function abbreviateEvent(title) {
     "Festa del Lavoro": "Lav",
     "Santo Patrono": "S.Pat",
     "Festa della Repubblica": "Rep",
-    "Collegio docenti": "CD",
+    "COLLEGIO DOCENTI": "CD",
     "Consigli di classe": "CdC", 
     "CdC": "CdC",
-    "Dipartimenti": "Dip",
+    "DIPARTIMENTI": "Dip",
     "Scrutini": "Scrut",
     "Open Day": "OD",
     "Orientamento": "Orient"
@@ -947,15 +1039,9 @@ function downloadICalFile() {
 }
 
 function openGoogleCalendarImport() {
-  // Genera il link per importare su Google Calendar
-  const calendarUrl = encodeURIComponent(window.location.href);
-  const googleCalendarUrl = `https://calendar.google.com/calendar/render?cid=${calendarUrl}`;
-  
-  // Alternativa: usa il link diretto per aggiungere un calendario
   const addCalendarUrl = 'https://calendar.google.com/calendar/u/0/r/settings/addbyurl';
   window.open(addCalendarUrl, '_blank');
   
-  // Mostra istruzioni all'utente
   setTimeout(() => {
     alert(`Per sincronizzare con Google Calendar:
     
@@ -969,36 +1055,87 @@ In alternativa, scarica il file .ics cliccando su "Scarica per iPhone/iPad" e im
 }
 
 // =============================================================================
-// FILTERS RENDERING
+// FILTERS RENDERING - VERSIONE CORRETTA
 // =============================================================================
 function renderFilters() {
   const counts = countEventsByCategory();
   const container = $("#filters");
-  container.innerHTML = "";
   
-  Object.keys(CATEGORY_COLORS).forEach(category => {
-    const count = counts[category] || 0;
-    
-    const chip = document.createElement("label");
-    chip.className = `chip ${activeCategories.has(category) ? "active" : ""}`;
-    chip.setAttribute('data-category', category);
-    chip.innerHTML = `
-      <input type="checkbox" ${activeCategories.has(category) ? "checked" : ""}>
-      <span>${category}</span>
-      <span class="count">${count}</span>
-    `;
-    
-    chip.addEventListener("click", () => {
-      if (activeCategories.has(category)) {
-        activeCategories.delete(category);
-      } else {
-        activeCategories.add(category);
-      }
-      render();
+  // Se i filtri non esistono ancora, creali
+  if (container.children.length === 0) {
+    Object.keys(CATEGORY_COLORS).forEach(category => {
+      const count = counts[category] || 0;
+      
+      const chip = document.createElement("label");
+      chip.setAttribute('data-category', category);
+      chip.innerHTML = `
+        <input type="checkbox">
+        <span>${category}</span>
+        <span class="count">${count}</span>
+      `;
+      
+      chip.addEventListener("click", (e) => {
+        e.preventDefault();
+        
+        console.log(`Cliccato su: ${category}`);
+        console.log(`Stato prima:`, Array.from(activeCategories));
+        
+        // Se questa categoria è già l'unica attiva, riattiva tutte
+        if (activeCategories.size === 1 && activeCategories.has(category)) {
+          activeCategories = new Set(Object.keys(CATEGORY_COLORS));
+          console.log("Riattivo tutte le categorie");
+        } else {
+          // Mostra solo questa categoria
+          activeCategories.clear();
+          activeCategories.add(category);
+          console.log("Mostro solo questa categoria");
+        }
+        
+        console.log(`Stato dopo:`, Array.from(activeCategories));
+        
+        // Aggiorna solo la visualizzazione senza ricreare tutto
+        updateFiltersDisplay();
+        renderCalendar();
+      });
+      
+      container.appendChild(chip);
     });
+  }
+  
+  updateFiltersDisplay();
+}
+
+function updateFiltersDisplay() {
+  const container = $("#filters");
+  Array.from(container.children).forEach(chip => {
+    const category = chip.getAttribute('data-category');
+    const isActive = activeCategories.has(category);
     
-    container.appendChild(chip);
+    // Aggiorna classe CSS
+    chip.className = `chip ${isActive ? "active" : ""}`;
+    
+    // Aggiorna checkbox
+    const checkbox = chip.querySelector('input');
+    if (checkbox) checkbox.checked = isActive;
   });
+}
+
+function renderCalendar() {
+  updateMonthLabel();
+  
+  const calendarArea = $("#calendarArea");
+  calendarArea.innerHTML = "";
+  
+  let viewContent;
+  if (currentView === "monthly") {
+    viewContent = renderMonthlyView(currentDate);
+  } else if (currentView === "weekly") {
+    viewContent = renderWeeklyView(currentDate);
+  } else {
+    viewContent = renderYearlyView(currentDate);
+  }
+  
+  calendarArea.appendChild(viewContent);
 }
 
 // =============================================================================
@@ -1275,7 +1412,6 @@ function updateMonthLabel() {
 
 function navigatePrevious() {
   if (currentView === "yearly") {
-    // Vista annuale fissa per anno scolastico 2025-2026
     return;
   }
   
@@ -1289,7 +1425,6 @@ function navigatePrevious() {
 
 function navigateNext() {
   if (currentView === "yearly") {
-    // Vista annuale fissa per anno scolastico 2025-2026
     return;
   }
   
@@ -1311,22 +1446,8 @@ function goToToday() {
 // MAIN RENDER FUNCTION
 // =============================================================================
 function render() {
-  updateMonthLabel();
   renderFilters();
-  
-  const calendarArea = $("#calendarArea");
-  calendarArea.innerHTML = "";
-  
-  let viewContent;
-  if (currentView === "monthly") {
-    viewContent = renderMonthlyView(currentDate);
-  } else if (currentView === "weekly") {
-    viewContent = renderWeeklyView(currentDate);
-  } else {
-    viewContent = renderYearlyView(currentDate);
-  }
-  
-  calendarArea.appendChild(viewContent);
+  renderCalendar();
 }
 
 // =============================================================================
